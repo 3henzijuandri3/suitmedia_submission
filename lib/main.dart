@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:suitmedia_submission/shared/theme.dart';
+import 'package:get/get.dart';
+import 'package:suitmedia_submission/ui/pages/first_screen_page.dart';
+import 'package:suitmedia_submission/ui/pages/second_screen_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,16 +11,37 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+         appBarTheme: AppBarTheme(
+            elevation: 0.4,
+            centerTitle: true,
+            backgroundColor: whiteColor,
+            toolbarHeight: 64,
+
+            iconTheme: IconThemeData(
+              size: 28,
+              color: purpleColor
+            ),
+
+            titleTextStyle: blackTextStyle.copyWith(
+                fontSize: 18,
+                fontWeight: semiBold
+            ),
+          ),
       ),
-      home: Placeholder(),
+
+      getPages: [
+        GetPage(name: '/', page: () => const FirstScreenPage()),
+        GetPage(name: '/second', page: () => const SecondScreenPage()),
+      ],
+
+      initialRoute: '/',
     );
   }
 }
