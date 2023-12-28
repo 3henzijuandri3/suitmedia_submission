@@ -3,6 +3,7 @@ import 'package:suitmedia_submission/shared/theme.dart';
 import 'package:get/get.dart';
 import 'package:suitmedia_submission/ui/pages/first_screen_page.dart';
 import 'package:suitmedia_submission/ui/pages/second_screen_page.dart';
+import 'package:suitmedia_submission/ui/pages/third_screen_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             toolbarHeight: 64,
 
             iconTheme: IconThemeData(
-              size: 28,
+              size: 30,
               color: purpleColor
             ),
 
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
 
       getPages: [
         GetPage(name: '/', page: () => const FirstScreenPage()),
-        GetPage(name: '/second', page: () => const SecondScreenPage()),
+        GetPage(name: '/second', page: () => SecondScreenPage(userWelcomeName: Get.arguments)),
+        GetPage(name: '/third', page: () => const ThirdScreenPage()),
       ],
 
       initialRoute: '/',
